@@ -22,14 +22,46 @@
       }
     }
   </script>
+  <!-- Incluye Alpine.js si aún no lo tienes -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body class="font-mono leading-relaxed max-w-3xl mx-auto px-6 py-16">
 
-<header class="mb-16 animate-fadeIn">
-  <h1 class="text-4xl font-bold text-blue-400 mb-2">Claudio Vallejo</h1>
-  <p class="text-lg text-gray-400">Agronomist Engineer | Serial Founder | Global Data Architect | Deep Diver (both literal and digital)</p>
-  <blockquote class="border-l-4 border-blue-400 pl-4 italic mt-4 text-sm">“I turn data chaos into strategic clarity. And sometimes, into visual poetry.”</blockquote>
-</header>
+<div class="relative w-full h-[450px] bg-[url('header.svg')] bg-cover bg-center">
+  <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+    <h1 class="text-5xl font-bold text-blue-400 drop-shadow">Claudio Vallejo</h1>
+    <p class="mt-2 text-xl text-blue-200">Data Architect | Serial Founder | Deep Diver</p>
+
+    <div
+            x-data="{
+    phrases: [
+      'I turn data chaos into strategic clarity. And sometimes, into poetry.',
+      'I write code like I drink wine: structured, with character, and no sugar.',
+      'Stop pitching ideas. Start building systems.',
+      'Beautiful dashboards are useless without purpose.',
+      'I build things that people actually use — not just fund.'
+    ],
+    selected: '',
+    currentText: '',
+    index: 0,
+    type() {
+      if (this.index < this.selected.length) {
+        this.currentText += this.selected[this.index];
+        this.index++;
+        setTimeout(() => this.type(), 35);
+      }
+    }
+  }"
+            x-init="
+    selected = phrases[Math.floor(Math.random() * phrases.length)];
+    type();
+  "
+    >
+      <p class="mt-4 italic text-sm text-gray-300 max-w-xl" x-text="currentText"></p>
+    </div>
+  </div>
+</div>
 
 <section class="mb-16">
   <h2 class="text-2xl text-orange-400 font-semibold mb-4">🥂 About Me</h2>
