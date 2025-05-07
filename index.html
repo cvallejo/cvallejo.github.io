@@ -22,46 +22,44 @@
       }
     }
   </script>
-  <!-- Incluye Alpine.js si aún no lo tienes -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 </head>
-<body class="font-mono leading-relaxed max-w-3xl mx-auto px-6 py-16">
-
-<div class="relative w-full h-[450px] bg-[url('header.svg')] bg-cover bg-center">
+<body class="font-mono leading-relaxed">
+<div class="relative w-full h-[225px] bg-[url('header.svg')] bg-cover bg-center">
   <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 py-12">
     <h1 class="text-5xl font-bold text-blue-400 drop-shadow mb-2 leading-tight">Claudio Vallejo</h1>
     <p class="text-xl text-blue-200 mb-4 leading-snug">Data Architect | Serial Founder | Deep Diver</p>
 
     <div
             x-data="{
-        phrases: [
-          'I turn data chaos into strategic clarity. And sometimes, into poetry.',
-          'I write code like I drink wine: structured, with character, and no sugar.',
-          'Stop pitching ideas. Start building systems.',
-          'Beautiful dashboards are useless without purpose.',
-          'I build things that people actually use — not just fund.'
-        ],
-        selected: '',
-        currentText: '',
-        index: 0,
-        type() {
-          if (this.index < this.selected.length) {
-            this.currentText += this.selected[this.index];
-            this.index++;
-            setTimeout(() => this.type(), 35);
+          phrases: [
+            'I turn data chaos into strategic clarity. And sometimes, into poetry.',
+            'I write code like I drink wine: structured, with character, and no sugar.',
+            'Stop pitching ideas. Start building systems.',
+            'Beautiful dashboards are useless without purpose.',
+            'I build things that people actually use — not just fund.'
+          ],
+          selected: '',
+          currentText: '',
+          index: 0,
+          type() {
+            if (this.index < this.selected.length) {
+              this.currentText += this.selected[this.index];
+              this.index++;
+              setTimeout(() => this.type(), 35);
+            }
           }
-        }
-      }"
+        }"
             x-init="
-        selected = phrases[Math.floor(Math.random() * phrases.length)];
-        type();
-      "
+          selected = phrases[Math.floor(Math.random() * phrases.length)];
+          type();
+        "
     >
       <p class="italic text-base text-gray-300 max-w-xl mx-auto leading-relaxed" x-text="currentText"></p>
     </div>
   </div>
 </div>
+<main class="max-w-3xl mx-auto px-6 py-24">
 
 <section class="mb-16">
   <h2 class="text-2xl text-orange-400 font-semibold mb-4">🥂 About Me</h2>
@@ -127,6 +125,6 @@
   <a href="https://claudio-vallejo.com" target="_blank" class="text-blue-400 hover:text-blue-300 underline mt-2 inline-block">claudio-vallejo.com</a>
   <p class="mt-2 text-sm italic text-gray-500">Available 24/7 — unlike my inbox.</p>
 </section>
-
+</main>
 </body>
 </html>
